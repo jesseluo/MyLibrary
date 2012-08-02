@@ -9,6 +9,10 @@
 #import "BookDetailViewController.h"
 #import "EditBookInfoViewController.h"
 
+@interface BookDetailViewController (Private)
+- (void) refreshViews;
+@end
+
 @implementation BookDetailViewController 
 
 @synthesize booknameLabel = _booknameLabel;

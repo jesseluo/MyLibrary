@@ -8,6 +8,10 @@
 
 #import "BookInfoDownloader.h"
 
+@interface BookInfoDownloader (Private)
+- (BOOL) parseXML;
+@end
+
 @implementation BookInfoDownloader {
     Book *_book;
     NSString *_isbn;

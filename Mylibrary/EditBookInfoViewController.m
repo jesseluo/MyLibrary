@@ -15,6 +15,9 @@
     NSString *_tempISBN;
     NSUndoManager *_undoManager;
 }
+- (void) showProgressHUD;
+- (void) refreshViews;
+
 @end
 
 @implementation EditBookInfoViewController
