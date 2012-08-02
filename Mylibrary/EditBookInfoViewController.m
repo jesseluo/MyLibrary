@@ -24,7 +24,7 @@
 @synthesize isbnText = _isbnText;
 @synthesize booknameText = _booknameText;
 @synthesize authorText = _authorText;
-
+@synthesize scrollView = _scrollView;
 @synthesize bookToSave = _bookToSave;
 @synthesize managedObjectContext = _managedObjectContext;
 
@@ -56,6 +56,9 @@
     _booknameText.delegate = self;
     _isbnText.delegate = self;
     _authorText.delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyBoardHeightChange:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyBoardHeightChange:) name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -234,6 +237,16 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - NSNotification
+- (void)onKeyBoardHeightChange:(NSNotification *)notification
+{
+    CGRect keyboardFrame;
+    [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];
+    
+    //TODO let the scrollView point to the scroll view in the xib file (same size as original view), put all UI elements on the scroll vuew and the view on the self.view
+    _scrollView.contentInset = UIEdgeInsetsMake(_scrollView.contentInset.top, 0, keyboardFrame.origin.y<480? keyboardFrame.size.height : 0, 0);
 }
 
 @end
