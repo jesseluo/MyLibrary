@@ -70,7 +70,7 @@
                     <navigationItem key="navigationItem" title="所有书籍" id="36">
                         <barButtonItem key="leftBarButtonItem" title="设置" id="n9T-ug-z9y">
                             <connections>
-                                <segue destination="gWV-cL-HuU" kind="push" id="CTJ-9h-8Ab"/>
+                                <segue destination="twa-O6-UBT" kind="push" id="VwU-Ph-20R"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7h7-5r-NMy">
@@ -83,20 +83,110 @@
             </objects>
             <point key="canvasLocation" x="459" y="64"/>
         </scene>
-        <!--View Controller - 设置-->
-        <scene sceneID="U8G-1z-ACl">
+        <!--Table View Controller - 设置-->
+        <scene sceneID="8bz-yX-SbK">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HIy-H7-yUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="gWV-cL-HuU" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YI5-Ax-TgT">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WIr-Xr-Psp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="twa-O6-UBT" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="aFS-tO-F5t">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="separatorColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="默认位置" id="XAD-fN-A46">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Brs-RW-jjT">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="喵" minimumFontSize="17" id="7m1-So-tXV">
+                                                    <rect key="frame" x="20" y="1" width="260" height="42"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="UEo-LM-bDA">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="nDj-wj-OhO" style="IBUITableViewCellStyleDefault" id="Mit-9E-4xe">
+                                        <rect key="frame" x="0.0" y="112" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="清除所有数据" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nDj-wj-OhO">
+                                                    <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="" id="Ffx-we-lRV">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="8IH-Ap-9Lv" style="IBUITableViewCellStyleDefault" id="5Gg-uC-Tff">
+                                        <rect key="frame" x="0.0" y="178" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="关于" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8IH-Ap-9Lv">
+                                                    <rect key="frame" x="10" y="0.0" width="260" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <segue destination="vJi-RE-1Xb" kind="push" id="7nN-bF-ezT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="twa-O6-UBT" id="toE-KI-r1s"/>
+                            <outlet property="delegate" destination="twa-O6-UBT" id="sOL-dp-cVB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="设置" id="6JW-fb-2ZE"/>
+                </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="484" y="-631"/>
+        </scene>
+        <!--View Controller - 关于-->
+        <scene sceneID="4J6-Hw-GQ5">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9sn-S0-3zY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="vJi-RE-1Xb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FDr-k1-Kbj">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="设置" id="EuK-rT-8FY"/>
+                    <navigationItem key="navigationItem" title="关于" id="lXQ-qq-Vqc"/>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="566" y="-638"/>
+            <point key="canvasLocation" x="962" y="-1013"/>
         </scene>
         <!--Edit Book Info View Controller - 编辑书籍信息-->
         <scene sceneID="RDu-du-4KP">
