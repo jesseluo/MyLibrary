@@ -14,6 +14,7 @@
     BookInfoDownloader *_biDownloader;
     NSString *_tempISBN;
     NSUndoManager *_undoManager;
+    NSArray *_state;
 }
 - (void) showProgressHUD;
 - (void) refreshViews;
@@ -24,7 +25,13 @@
 @synthesize isbnText = _isbnText;
 @synthesize booknameText = _booknameText;
 @synthesize authorText = _authorText;
+@synthesize stateText = _stateText;
+@synthesize positionText = _positionText;
+
 @synthesize scrollView = _scrollView;
+@synthesize statePicker = _statePicker;
+@synthesize doneToolBar = _doneToolBar;
+
 @synthesize bookToSave = _bookToSave;
 @synthesize managedObjectContext = _managedObjectContext;
 
@@ -53,12 +60,20 @@
         _bookToSave = [NSEntityDescription insertNewObjectForEntityForName:@"Book" inManagedObjectContext:_managedObjectContext];
     }
     
-    _booknameText.delegate = self;
-    _isbnText.delegate = self;
-    _authorText.delegate = self;
-    
+    // used to prevent keyboard from covering textfield
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyBoardHeightChange:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyBoardHeightChange:) name:UIKeyboardDidHideNotification object:nil];
+    
+    // init stateText & pickerView
+    _state = [NSArray arrayWithObjects:@"在手",@"借出",@"借入", nil];  
+    _stateText.inputView = _statePicker;  
+    _stateText.inputAccessoryView = _doneToolBar;  
+    _stateText.delegate = self;
+    _stateText.text = [_state objectAtIndex:0];
+    _statePicker.delegate = self;  
+    _statePicker.dataSource = self;  
+    _statePicker.hidden = YES;
+    _doneToolBar.hidden = YES;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -70,6 +85,9 @@
     [self setIsbnText:nil];
     [self setBooknameText:nil];
     [self setAuthorText:nil];
+    [self setStateText:nil];
+    [self setPositionText:nil];
+    [self setDoneToolBar:nil];
     [super viewDidUnload];
 }
 
@@ -200,29 +218,29 @@
 #pragma mark - keyboard actions
 
 // avoid keyboard from covering textfield
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{   
-    CGRect frame = textField.frame;
-    float heightOfKeyboard = 216.0;
-    int offset = frame.origin.y + 32 - (self.view.frame.size.height - heightOfKeyboard);
-
-    [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];               
-    if(offset > 0)
-    {
-        CGRect rect = CGRectMake(0.0f, -offset,self.view.frame.size.width,self.view.frame.size.height);               
-        self.view.frame = rect;       
-    }       
-    [UIView commitAnimations];               
-}
+//- (void)textFieldDidBeginEditing:(UITextField *)textField
+//{   
+//    CGRect frame = textField.frame;
+//    float heightOfKeyboard = 216.0;
+//    int offset = frame.origin.y + 32 - (self.view.frame.size.height - heightOfKeyboard);
+//
+//    [UIView beginAnimations:@"ResizeForKeyBoard" context:nil];               
+//    if(offset > 0)
+//    {
+//        CGRect rect = CGRectMake(0.0f, -offset,self.view.frame.size.width,self.view.frame.size.height);               
+//        self.view.frame = rect;       
+//    }       
+//    [UIView commitAnimations];               
+//}
 
 // close the keyboard
-- (IBAction) textFieldDoneEditing:(UITextField *)textField
+- (IBAction) textFieldDoneEditing:(UITextField *)sender
 {
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];       
-    CGRect rect = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height);       
-    self.view.frame = rect;
-    [UIView commitAnimations];
-    [textField resignFirstResponder];
+//    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];       
+//    CGRect rect = CGRectMake(0.0f, 0.0f, self.view.frame.size.width, self.view.frame.size.height);       
+//    self.view.frame = rect;
+//    [UIView commitAnimations];
+    [sender resignFirstResponder];
 }
 
 // save instantly after editing
@@ -230,6 +248,46 @@
     [_bookToSave setValue:_booknameText.text forKey:@"name"];
     [_bookToSave setValue:_authorText.text forKey:@"author"];
     [_bookToSave setValue:_isbnText.text forKey:@"isbn"];
+    [_bookToSave setValue:_stateText.text forKey:@"state"];
+    [_bookToSave setValue:_positionText.text forKey:@"position"];
+}
+
+// NSNotification selector
+- (void)onKeyBoardHeightChange:(NSNotification *)sender
+{
+    
+    CGRect keyboardFrame;
+    [[sender.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];
+    
+    //TODO let the scrollView point to the scroll view in the xib file (same size as original view), put all UI elements on the scroll view and the view on the self.view
+    _scrollView.contentInset = UIEdgeInsetsMake(_scrollView.contentInset.top, 0, keyboardFrame.origin.y<480? keyboardFrame.size.height : 0, 0);
+}
+
+#pragma mark - stateText & pickerView methods
+
+- (IBAction)stateDoneButtonTapped:(UIBarButtonItem *)sender {
+    [_stateText endEditing:YES];  
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{  
+    NSInteger row = [_statePicker selectedRowInComponent:0];  
+    _stateText.text = [_state objectAtIndex:row];  
+} 
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    _statePicker.hidden = NO;
+    _doneToolBar.hidden = NO;
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+
+-(NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return [_state count];
+}
+-(NSString*) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    return [_state objectAtIndex:row];
 }
 
 #pragma mark - other methods
@@ -237,16 +295,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
 return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-#pragma mark - NSNotification
-- (void)onKeyBoardHeightChange:(NSNotification *)notification
-{
-    CGRect keyboardFrame;
-    [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardFrame];
-    
-    //TODO let the scrollView point to the scroll view in the xib file (same size as original view), put all UI elements on the scroll vuew and the view on the self.view
-    _scrollView.contentInset = UIEdgeInsetsMake(_scrollView.contentInset.top, 0, keyboardFrame.origin.y<480? keyboardFrame.size.height : 0, 0);
 }
 
 @end

@@ -11,15 +11,21 @@
 #import "Book.h"
 #import "MBProgressHUD.h"
 
-@interface EditBookInfoViewController : UIViewController <ZBarReaderDelegate, MBProgressHUDDelegate, UIAlertViewDelegate, UITextFieldDelegate>
+@interface EditBookInfoViewController : UIViewController <ZBarReaderDelegate, MBProgressHUDDelegate, UIAlertViewDelegate, UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *isbnText;
 @property (strong, nonatomic) IBOutlet UITextField *booknameText;
 @property (strong, nonatomic) IBOutlet UITextField *authorText;
+@property (strong, nonatomic) IBOutlet UITextField *stateText;
+@property (strong, nonatomic) IBOutlet UITextField *positionText;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIPickerView *statePicker;
+@property (strong, nonatomic) IBOutlet UIToolbar *doneToolBar;
 
 @property (strong, nonatomic) Book *bookToSave;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+- (IBAction)stateDoneButtonTapped:(UIBarButtonItem *)sender;
 - (IBAction) scanButtonTapped:(UIBarButtonItem *)sender;
 - (IBAction) saveButtonTapped:(UIBarButtonItem *)sender;
 - (IBAction) cancelButtonTapped:(UIBarButtonItem *)sender;

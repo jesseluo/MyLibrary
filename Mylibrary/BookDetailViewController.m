@@ -18,6 +18,8 @@
 @synthesize booknameLabel = _booknameLabel;
 @synthesize authorLabel = _authorLabel;
 @synthesize isbnLabel = _isbnLabel;
+@synthesize stateLabel = _stateLabel;
+@synthesize positionLabel = _positionLabel;
 @synthesize backGestureRecognizer = _backGestureRecognizer;
 
 @synthesize bookToDisplay = _bookToDisplay;
@@ -49,6 +51,8 @@
     [self setBooknameLabel:nil];
     [self setAuthorLabel:nil];
     [self setIsbnLabel:nil];
+    [self setStateLabel:nil];
+    [self setPositionLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -57,6 +61,8 @@
     _booknameLabel.text = [[_bookToDisplay valueForKey:@"name"] description];
     _authorLabel.text = [[_bookToDisplay valueForKey:@"author"] description];
     _isbnLabel.text = [[_bookToDisplay valueForKey:@"isbn"] description];
+    _stateLabel.text = [[_bookToDisplay valueForKey:@"state"] description]; 
+    _positionLabel.text = [[_bookToDisplay valueForKey:@"position"] description]; 
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

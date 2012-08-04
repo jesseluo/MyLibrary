@@ -14,6 +14,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *booknameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *authorLabel;
 @property (strong, nonatomic) IBOutlet UILabel *isbnLabel;
+@property (strong, nonatomic) IBOutlet UILabel *stateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *positionLabel;
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *backGestureRecognizer;
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
