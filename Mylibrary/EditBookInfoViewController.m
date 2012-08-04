@@ -74,6 +74,8 @@
     _statePicker.dataSource = self;  
     _statePicker.hidden = YES;
     _doneToolBar.hidden = YES;
+    
+    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width, 273); //If set 273 to 480, it will scroll...
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -261,6 +263,8 @@
     
     //TODO let the scrollView point to the scroll view in the xib file (same size as original view), put all UI elements on the scroll view and the view on the self.view
     _scrollView.contentInset = UIEdgeInsetsMake(_scrollView.contentInset.top, 0, keyboardFrame.origin.y<480? keyboardFrame.size.height : 0, 0);
+    
+    [_scrollView scrollRectToVisible:_currentTextField.frame animated:YES];
 }
 
 #pragma mark - stateText & pickerView methods
@@ -271,12 +275,22 @@
 
 -(void)textFieldDidEndEditing:(UITextField *)textField{  
     NSInteger row = [_statePicker selectedRowInComponent:0];  
-    _stateText.text = [_state objectAtIndex:row];  
+    _stateText.text = [_state objectAtIndex:row];
+    
+    _currentTextField = nil;
 } 
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField {
-    _statePicker.hidden = NO;
-    _doneToolBar.hidden = NO;
+    if (textField == self.stateText) {
+        _statePicker.hidden = NO;
+        _doneToolBar.hidden = NO;
+    }
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    _currentTextField = textField;
+    return YES;
 }
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{

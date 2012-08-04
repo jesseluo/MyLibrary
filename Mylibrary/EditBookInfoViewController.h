@@ -12,7 +12,9 @@
 #import "MBProgressHUD.h"
 
 @interface EditBookInfoViewController : UIViewController <ZBarReaderDelegate, MBProgressHUDDelegate, UIAlertViewDelegate, UIScrollViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
-
+{
+    UITextField *_currentTextField;
+}
 @property (strong, nonatomic) IBOutlet UITextField *isbnText;
 @property (strong, nonatomic) IBOutlet UITextField *booknameText;
 @property (strong, nonatomic) IBOutlet UITextField *authorText;

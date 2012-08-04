@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="10K549" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
         <scene sceneID="11">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
@@ -21,7 +19,6 @@
             </objects>
             <point key="canvasLocation" x="-1" y="64"/>
         </scene>
-        <!--Master View Controller - Master-->
         <scene sceneID="18">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
@@ -83,7 +80,6 @@
             </objects>
             <point key="canvasLocation" x="459" y="64"/>
         </scene>
-        <!--Table View Controller - 设置-->
         <scene sceneID="8bz-yX-SbK">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WIr-Xr-Psp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -173,7 +169,6 @@
             </objects>
             <point key="canvasLocation" x="484" y="-631"/>
         </scene>
-        <!--View Controller - 关于-->
         <scene sceneID="4J6-Hw-GQ5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sn-S0-3zY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,7 +183,6 @@
             </objects>
             <point key="canvasLocation" x="962" y="-1013"/>
         </scene>
-        <!--Edit Book Info View Controller - 编辑书籍信息-->
         <scene sceneID="RDu-du-4KP">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60J-de-USE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -248,6 +242,7 @@
                                         <connections>
                                             <action selector="textFieldDoneEditing:" destination="1ZK-9g-Bh6" eventType="editingDidEndOnExit" id="swq-hJ-Hbo"/>
                                             <action selector="textFieldEditingDidEnd:" destination="1ZK-9g-Bh6" eventType="editingDidEnd" id="cr8-Wg-FNt"/>
+                                            <outlet property="delegate" destination="1ZK-9g-Bh6" id="q4o-EH-CSD"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Position" minimumFontSize="17" id="bbh-nL-MnR">
@@ -258,6 +253,7 @@
                                         <connections>
                                             <action selector="textFieldDoneEditing:" destination="1ZK-9g-Bh6" eventType="editingDidEndOnExit" id="HPZ-5r-kb3"/>
                                             <action selector="textFieldEditingDidEnd:" destination="1ZK-9g-Bh6" eventType="editingDidEnd" id="2ik-QW-8Hh"/>
+                                            <outlet property="delegate" destination="1ZK-9g-Bh6" id="Yhm-bQ-Crb"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Bookname" minimumFontSize="17" id="GG0-nP-Pkx">
@@ -268,6 +264,7 @@
                                         <connections>
                                             <action selector="textFieldDoneEditing:" destination="1ZK-9g-Bh6" eventType="editingDidEndOnExit" id="EaV-g3-pRE"/>
                                             <action selector="textFieldEditingDidEnd:" destination="1ZK-9g-Bh6" eventType="editingDidEnd" id="73H-s7-HxU"/>
+                                            <outlet property="delegate" destination="1ZK-9g-Bh6" id="ZBq-hL-RpX"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input Author" minimumFontSize="17" id="oUF-Kp-POB">
@@ -278,6 +275,7 @@
                                         <connections>
                                             <action selector="textFieldDoneEditing:" destination="1ZK-9g-Bh6" eventType="editingDidEndOnExit" id="2Fk-hs-oSO"/>
                                             <action selector="textFieldEditingDidEnd:" destination="1ZK-9g-Bh6" eventType="editingDidEnd" id="1BH-k5-fQY"/>
+                                            <outlet property="delegate" destination="1ZK-9g-Bh6" id="zlX-Hb-lBI"/>
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input ISBN" minimumFontSize="17" id="pYe-xs-uQ4">
@@ -288,6 +286,7 @@
                                         <connections>
                                             <action selector="textFieldDoneEditing:" destination="1ZK-9g-Bh6" eventType="editingDidEndOnExit" id="DED-J5-WSX"/>
                                             <action selector="textFieldEditingDidEnd:" destination="1ZK-9g-Bh6" eventType="editingDidEnd" id="Rgm-WU-EVg"/>
+                                            <outlet property="delegate" destination="1ZK-9g-Bh6" id="aBB-rr-3MP"/>
                                         </connections>
                                     </textField>
                                     <toolbar opaque="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="P0X-Dy-jUa">
@@ -350,7 +349,6 @@
             </objects>
             <point key="canvasLocation" x="1140" y="-330"/>
         </scene>
-        <!--Book Detail View Controller - 书籍详情-->
         <scene sceneID="j5e-n1-leT">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VY7-iV-W3j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -467,42 +465,6 @@
     <resources>
         <image name="bookImagePlaceHolder.png" width="100" height="145"/>
     </resources>
-    <classes>
-        <class className="BookDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/BookDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="backGestureDetected:" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="outlet" name="authorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="backGestureRecognizer" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="outlet" name="booknameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="isbnLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="positionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="stateLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="EditBookInfoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditBookInfoViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelButtonTapped:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="saveButtonTapped:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="scanButtonTapped:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="stateDoneButtonTapped:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="textFieldDoneEditing:" candidateClass="UITextField"/>
-                <relationship kind="action" name="textFieldEditingDidEnd:" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="authorText" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="booknameText" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="doneToolBar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="isbnText" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="positionText" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="statePicker" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="stateText" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
